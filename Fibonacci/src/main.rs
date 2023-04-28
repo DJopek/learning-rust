@@ -1,4 +1,5 @@
 use num_bigint::{BigInt, ToBigInt};
+use std::io;
 
 fn main() {
 
@@ -7,7 +8,17 @@ fn main() {
     let mut a_n_1: Vec<BigInt> = vec![0.to_bigint().unwrap(), 0.to_bigint().unwrap()];
     let mut a_n: Vec<BigInt> = vec![1.to_bigint().unwrap()];
 
-    for i in 0..1000 {
+    println!("Please enter a number:");
+
+    let mut input = String::new();
+
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+
+    let n: usize = input.trim().parse().expect("Invalid input");
+
+    for i in 0..n {
     
         let x = (a_n[i].clone() + a_n_1[i].clone()) % &p;
     
